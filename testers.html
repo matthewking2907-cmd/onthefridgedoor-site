@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Tester guide · On the FridgeDoor</title>
+<link rel="stylesheet" href="site.css?v=91fa1b6a5f">
+<link rel="icon" href="icon-192.png?v=d05837e90c">
+<style>
+.kit-steps{ counter-reset:kit; list-style:none; padding:0; margin:0 0 8px; display:grid; gap:10px; }
+.kit-steps > li{ counter-increment:kit; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px 12px 52px; position:relative; }
+.kit-steps > li::before{ content:counter(kit); position:absolute; left:14px; top:12px; width:26px; height:26px; border-radius:50%; background:var(--accent); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:.9rem; }
+.kit-steps p{ margin:4px 0 0; }
+.kit-where{ display:inline-block; font-size:.86rem; font-weight:700; color:var(--accent); margin-top:4px; }
+.kit-days{ list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+.kit-days li{ background:var(--card); border:1px solid var(--line); border-radius:14px; }
+.kit-days label{ display:flex; gap:12px; align-items:flex-start; padding:12px 14px; cursor:pointer; }
+.kit-days input{ width:22px; height:22px; margin:2px 0 0; flex:0 0 auto; accent-color:var(--accent); }
+.kit-days b{ display:block; }
+.kit-days span.kit-d{ font-size:.8rem; font-weight:800; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+.kit-days li.kit-done{ opacity:.6; }
+.kit-progress{ height:10px; background:var(--line); border-radius:6px; overflow:hidden; margin:6px 0 4px; }
+.kit-progress span{ display:block; height:100%; width:0; background:var(--accent); border-radius:6px; transition:width .2s; }
+.kit-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+.kit-grid .card{ margin:0; }
+.kit-grid h3{ margin:0 0 6px; font-size:1.05rem; }
+.kit-grid p{ margin:6px 0 0; }
+.kit-shots{ display:flex; gap:12px; justify-content:center; margin:16px 0 8px; }
+.kit-shots img{ width:46%; max-width:220px; height:auto; border-radius:20px; border:1px solid var(--line); }
+.kit-tip{ border-left:4px solid var(--accent); }
+.kit-tip p{ margin:0; }
+.kit-faq p:first-child{ margin-top:0; }
+.kit-faq p:last-child{ margin-bottom:0; }
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="https://onthefridgedoor.com/"><img src="icon-192.png?v=d05837e90c" alt="">On the FridgeDoor</a><a class="btn ghost" href="https://app.onthefridgedoor.com/">Open the app</a></header>
+<main class="wrap">
+<h1>Thanks for testing</h1>
+<p>On the FridgeDoor is a family planner built around one idea: <strong>no one carries it all</strong>. Meals, the shopping list, chores, plans and birthdays live in one place that the whole household can see, so it isn’t all in one person’s head.</p>
+<p>It’s early, and you’re one of the first families to use it. Here’s what would help most:</p>
+<div class="card kit-tip">
+<p><strong>Use it for two weeks, as a household.</strong> Get the other adults on it if you can, and children too if they’re old enough. Then tell us what worked, what confused you and what you wish it did. There’s a “Send feedback” button in Settings, and we read every message.</p>
+</div>
+<div class="kit-shots"><img src="shot-today.png?v=8ea4870a14" alt="The Today screen: plans, tonight’s dinner and chores"><img src="shot-shopping.png?v=2dd31aa1de" alt="The shopping list, grouped by aisle"></div>
+
+<h2>Get started (about 5 minutes)</h2>
+<ol class="kit-steps">
+<li><strong>Open the app on your phone</strong><p>Go to <a href="https://app.onthefridgedoor.com/">app.onthefridgedoor.com</a>. It runs in your browser, so there’s nothing to download from a store yet.</p></li>
+<li><strong>Put it on your home screen</strong><p><b>iPhone:</b> open it in Safari, tap the Share button, then <em>Add to Home Screen</em>.<br><b>Android:</b> in Chrome, tap the ⋮ menu, then <em>Install app</em> (or <em>Add to Home screen</em>).</p><p>From then on, open it from the icon, not the browser. On iPhone the two keep separate copies.</p></li>
+<li><strong>Answer the setup questions</strong><p>Who’s in your family, what you’d like help with (meals, shopping, chores, tasks) and a few details like your shop day. It builds a starter meal plan, shopping list and chore chart from your answers, and you can change everything afterwards.</p></li>
+<li><strong>Switch on sync</strong><p>Type your email and then the code we send you. There are no passwords. Sync is what lets everyone in the household share the plan.</p><span class="kit-where">⚙️ Settings › Sync across devices</span></li>
+<li><strong>Bring everyone in</strong><p><em>Invite another parent</em> sends a link to your partner or another carer. They sign in with their own email and see the same plan. <em>📱 Add a child’s device</em> connects a child’s phone or tablet with no email or account.</p><span class="kit-where">⚙️ Settings › Sync across devices, or 👪 Bring everyone in on Today</span></li>
+</ol>
+<p class="muted">Opened an invite link but it went to the browser instead of the app? Open the app from its icon, tap <em>Got a family code?</em> and type the code from the message.</p>
+
+<h2>Your two-week try-list</h2>
+<p>One small thing a day, so you see every part of the app. Tick them off as you go (the ticks stay on this phone).</p>
+<div class="kit-progress" aria-hidden="true"><span id="kitBar"></span></div>
+<p class="muted" id="kitCount" role="status">0 of 14 done</p>
+<ul class="kit-days" id="kitDays">
+<li><label><input type="checkbox" data-k="1"><span><span class="kit-d">Day 1</span><b>Set up and look at Today</b>Today shows the day’s plans, tonight’s dinner and whose chores are due. Swipe or use the arrows to look ahead.</span></label></li>
+<li><label><input type="checkbox" data-k="2"><span><span class="kit-d">Day 2</span><b>Get someone else on it</b>Invite the other parent or add a child’s device. This is where it starts to share the load.</span></label></li>
+<li><label><input type="checkbox" data-k="3"><span><span class="kit-d">Day 3</span><b>Make the meal plan yours</b>On 🍽️ Meal plan, swap a meal you don’t fancy. On Today, try <em>Change meal</em> on tonight’s dinner.</span></label></li>
+<li><label><input type="checkbox" data-k="4"><span><span class="kit-d">Day 4</span><b>Check the shopping list</b>🛒 Shopping list builds itself from the week’s meals, sorted by aisle. Add something by hand at the top and tick things off in the shop.</span></label></li>
+<li><label><input type="checkbox" data-k="5"><span><span class="kit-d">Day 5</span><b>Turn on reminders</b>⚙️ Settings › Reminders on this device. Choose whose device it is to get a morning summary of the day and a heads-up the evening before.</span></label></li>
+<li><label><input type="checkbox" data-k="6"><span><span class="kit-d">Day 6</span><b>Cook from a recipe</b>Tap <em>📖 Recipe</em> on tonight’s dinner. Switch between Quick and Full method, and tap the timer buttons on the steps.</span></label></li>
+<li><label><input type="checkbox" data-k="7"><span><span class="kit-d">Day 7</span><b>Say who’s cooking</b>Under tonight’s dinner, tap a name in <em>🍳 Who’s cooking?</em> If they have reminders on, they get a nudge.</span></label></li>
+<li><label><input type="checkbox" data-k="8"><span><span class="kit-d">Day 8</span><b>Share out the chores</b>Tick a chore off on Today. On 🧹 Chores, change who does what, and add a prize if you use rewards.</span></label></li>
+<li><label><input type="checkbox" data-k="9"><span><span class="kit-d">Day 9</span><b>Add a plan and hand something over</b>On Today, tap <em>＋ Event</em> (a dentist trip, a late shift) and <em>＋ Task</em>. On a task, tap 🤝 to hand it to someone else.</span></label></li>
+<li><label><input type="checkbox" data-k="10"><span><span class="kit-d">Day 10</span><b>Mark something running low</b>On 🧻 Essentials, tap anything you’re nearly out of, like toilet roll or washing-up liquid. It goes on your next shop.</span></label></li>
+<li><label><input type="checkbox" data-k="11"><span><span class="kit-d">Day 11</span><b>Add birthdays</b>On 🎂 Occasions, add family birthdays with a reminder and a gift idea or two. Want Christmas, Eid, Diwali or others? Tap <em>Choose celebrations</em>.</span></label></li>
+<li><label><input type="checkbox" data-k="12"><span><span class="kit-d">Day 12</span><b>Bring in your other calendars</b>⚙️ Settings › Connect calendars shows your Google, Outlook or iCloud events alongside the family plan.</span></label></li>
+<li><label><input type="checkbox" data-k="13"><span><span class="kit-d">Day 13</span><b>Set up the small stuff</b>In ⚙️ Settings: Bin day, Food preferences and a Parent PIN. Try the 🍳 Kitchen display on a tablet or old phone in the kitchen.</span></label></li>
+<li><label><input type="checkbox" data-k="14"><span><span class="kit-d">Day 14</span><b>Tell us what you think</b>⚙️ Settings › Send feedback. What did you use most, what got in the way, and would you keep using it?</span></label></li>
+</ul>
+
+<h2>What each part does</h2>
+<div class="kit-grid">
+<div class="card"><h3>☀️ Today and ⏭️ Tomorrow</h3><p>The day at a glance: plans, dinner with its ingredients, and chores. On a device set to one person, it shows their day.</p></div>
+<div class="card"><h3>🍽️ Meal plan</h3><p>A four-week rotation of dinners. Tap a meal, then a day, to place it. Every meal has a recipe with timers, and quantities scale to your household.</p></div>
+<div class="card"><h3>🛒 Shopping list</h3><p>Built from the meals on your plan, grouped by aisle, for your shop day. Add your own items for this shop or every shop.</p></div>
+<div class="card"><h3>🧻 Essentials</h3><p>The things you keep stocked. Tap what’s running low and it lands on the next shop, with a reminder the evening before if reminders are on.</p></div>
+<div class="card"><h3>🧹 Chores</h3><p>A chore chart that rotates fairly and suits each child’s age. 📋 Upcoming chores shows what’s coming up.</p></div>
+<div class="card"><h3>☑️ Tasks</h3><p>One-off jobs with a due date and an owner. Hand one over with 🤝 and they get an “Over to you” nudge.</p></div>
+<div class="card"><h3>🗓️ Calendar</h3><p>Everyone’s plans in one view, including calendars you connect from Google, Outlook or iCloud.</p></div>
+<div class="card"><h3>🎂 Occasions</h3><p>Birthdays, anniversaries and celebrations, with reminders days ahead and gift ideas. Celebrations are only added if you choose them.</p></div>
+<div class="card"><h3>🔔 Reminders and nudges</h3><p>Each phone chooses its own reminders. Parents can send a quick 📣 Nudge from Today (“Time for bed”), and the person can reply “OK” or “On my way” straight from the notification.</p></div>
+<div class="card"><h3>🔒 Parent PIN</h3><p>Set a PIN, then choose <em>Lock for kids</em> in the menu. Children can still see their day and tick chores, but settings, shopping and editing are hidden.</p></div>
+</div>
+
+<h2>Sending feedback</h2>
+<p>In the app: <strong>⚙️ Settings › Send feedback</strong>. If you’re signed in to sync, it comes straight to us with your email so we can reply. Otherwise it opens an email to <a href="mailto:hello@onthefridgedoor.com">hello@onthefridgedoor.com</a>.</p>
+<p>The most useful things to tell us:</p>
+<ul>
+<li>Anything that confused you, or where you didn’t know what to tap next.</li>
+<li>Anything that looked wrong, like a quantity, a recipe step or a date. A screenshot helps.</li>
+<li>What you used most, and what you didn’t use at all.</li>
+<li>What would make you keep using it after the two weeks.</li>
+</ul>
+
+<h2>Good to know</h2>
+<div class="card kit-faq">
+<p><strong>Is it free?</strong> Yes, all of it, while we test.</p>
+<p><strong>iPhone or Android?</strong> Both. On Android we’ll also send you a Google Play link later, so you can install it from the Play Store. If you join that test, please stay in it for at least 14 days, because Google checks this before the app can go public.</p>
+<p><strong>Your data.</strong> Your plan is saved on your phone. With sync on, a copy is kept on our server in London so your household’s devices can share it. Nobody else can see it, there are no adverts and we never sell your data. You can delete your account at any time in Settings. The full details are in the <a href="privacy.html">privacy policy</a>.</p>
+<p><strong>Something broke?</strong> Close the app and open it again; that usually brings the latest version. If it doesn’t, tell us what you were doing and we’ll sort it.</p>
+</div>
+
+<div class="closing"><h2>Thank you</h2><p class="muted">Every bit of feedback shapes what this becomes.</p><a class="btn" href="https://app.onthefridgedoor.com/">Open the app</a></div>
+</main>
+<script>
+(function(){
+  var KEY = 'otfd-tester-days', box = document.getElementById('kitDays'), done = {};
+  try{ done = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; }catch(e){ done = {}; }
+  function draw(){
+    var boxes = box.querySelectorAll('input'), n = 0;
+    boxes.forEach(function(b){ b.checked = !!done[b.dataset.k]; b.closest('li').classList.toggle('kit-done', b.checked); if(b.checked) n++; });
+    document.getElementById('kitCount').textContent = n + ' of ' + boxes.length + ' done' + (n === boxes.length ? '. Thank you!' : '');
+    document.getElementById('kitBar').style.width = Math.round(n * 100 / boxes.length) + '%';
+  }
+  box.addEventListener('change', function(e){
+    var k = e.target.dataset && e.target.dataset.k; if(!k) return;
+    if(e.target.checked) done[k] = 1; else delete done[k];
+    try{ localStorage.setItem(KEY, JSON.stringify(done)); }catch(err){}
+    draw();
+  });
+  draw();
+})();
+</script>
+</body>
+</html>
