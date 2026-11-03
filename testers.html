@@ -12,6 +12,7 @@
 .kit-steps > li{ counter-increment:kit; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px 12px 52px; position:relative; }
 .kit-steps > li::before{ content:counter(kit); position:absolute; left:14px; top:12px; width:26px; height:26px; border-radius:50%; background:var(--accent); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:.9rem; }
 .kit-steps p{ margin:4px 0 0; }
+.kit-play{ margin:6px 0 0; padding-left:20px; display:grid; gap:4px; }
 .kit-where{ display:inline-block; font-size:.86rem; font-weight:700; color:var(--accent); margin-top:4px; }
 .kit-days{ list-style:none; padding:0; margin:0; display:grid; gap:8px; }
 .kit-days li{ background:var(--card); border:1px solid var(--line); border-radius:14px; }
@@ -47,8 +48,14 @@
 
 <h2>Get started (about 5 minutes)</h2>
 <ol class="kit-steps">
-<li><strong>Open the app on your phone</strong><p>Go to <a href="https://app.onthefridgedoor.com/">app.onthefridgedoor.com</a>. It runs in your browser, so there’s nothing to download from a store yet.</p></li>
-<li><strong>Put it on your home screen</strong><p><b>iPhone:</b> open it in Safari, tap the Share button, then <em>Add to Home Screen</em>.<br><b>Android:</b> in Chrome, tap the ⋮ menu, then <em>Install app</em> (or <em>Add to Home screen</em>).</p><p>From then on, open it from the icon, not the browser. On iPhone the two keep separate copies.</p></li>
+<li id="android"><strong>On Android: get it from Google Play</strong><p>Do these in order, signed in to the same Google account throughout:</p>
+<ol class="kit-play">
+<li><a href="https://groups.google.com/g/onthefridgedoor-testers">Join the tester group</a> and tap <em>Join group</em>.</li>
+<li><a href="https://play.google.com/apps/testing/uk.co.mking.household">Become a tester</a>. If the page says it can’t find the app, wait a few minutes and try again.</li>
+<li><a href="https://play.google.com/store/apps/details?id=uk.co.mking.household">Install from Google Play</a>.</li>
+</ol>
+<p>Please install it this way, not from the browser, and stay in the test for the full 14 days. Google only lets the app go public once enough testers have.</p></li>
+<li><strong>On iPhone: put it on your home screen</strong><p>Open <a href="https://app.onthefridgedoor.com/">app.onthefridgedoor.com</a> in Safari, tap the Share button, then <em>Add to Home Screen</em>. There’s nothing to download from a store yet.</p><p>From then on, open it from the icon, not the browser. The two keep separate copies.</p></li>
 <li><strong>Answer the setup questions</strong><p>Who’s in your family, what you’d like help with (meals, shopping, chores, tasks) and a few details like your shop day. It builds a starter meal plan, shopping list and chore chart from your answers, and you can change everything afterwards.</p></li>
 <li><strong>Switch on sync</strong><p>Type your email and then the code we send you. There are no passwords. Sync is what lets everyone in the household share the plan.</p><span class="kit-where">⚙️ Settings › Sync across devices</span></li>
 <li><strong>Bring everyone in</strong><p><em>Invite another parent</em> sends a link to your partner or another carer. They sign in with their own email and see the same plan. <em>📱 Add a child’s device</em> connects a child’s phone or tablet with no email or account.</p><span class="kit-where">⚙️ Settings › Sync across devices, or 👪 Bring everyone in on Today</span></li>
